@@ -15,8 +15,6 @@ console.log(controller);
 
 
 
-
-
 // error handler
 onerror(app)
 

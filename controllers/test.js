@@ -1,8 +1,14 @@
+/*
+ * @Description: 
+ * @Author: huacong
+ * @Date: 2020-06-19 15:02:54
+ * @LastEditTime: 2020-06-22 17:49:02
+ * @LastEditors: huacong
+ */ 
 const http = require('http')
 const query = require('../util/http')
 
 const testApi = async (ctx, next) => {
- 
   var body = ''
   var req = http
     .request(
@@ -37,14 +43,13 @@ const testApi = async (ctx, next) => {
   console.log('ctx', ctx)
 }
 
-const test2 =async (ctx) =>{
-    query('get','/league/team').then()
-    ctx.response.body = 'test2'
-    
+const test2 = async (ctx) => {
+  const res = await query('get', '/league/team',ctx.originalUrl)
+  ctx.response.body = res
+  
 }
-
 
 module.exports = {
   'GET /wytest': testApi,
-  'GET /test2':  test2
+  'GET /test2': test2,
 }
